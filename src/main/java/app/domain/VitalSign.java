@@ -1,9 +1,6 @@
-package domain;
-
-import java.util.Scanner;
+package app.domain;
 
 public class VitalSign {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -61,28 +58,10 @@ public class VitalSign {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id del signo vital");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese los datos de la consulta");
-        this.consultation = new Consultation();
-        this.consultation.create();
-
-        System.out.println("Ingrese la temperatura");
-        this.temperature = sc.nextDouble();
-        sc.nextLine();
-
-        System.out.println("Ingrese la presión arterial (ej: 120/80)");
-        this.pressure = sc.nextLine();
-    }
-
-    public void select() {
-        System.out.println("Id signo vital: " + this.id + "\n" +
+    @Override
+    public String toString() {
+        return "Id signo vital: " + this.id + "\n" +
                 "Temperatura: " + this.temperature + "\n" +
-                "Presión: " + this.pressure
-        );
-        this.consultation.select();
+                "Presión: " + this.pressure;
     }
 }

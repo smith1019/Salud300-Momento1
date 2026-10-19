@@ -1,9 +1,6 @@
-package domain;
-
-import java.util.Scanner;
+package app.domain;
 
 public class Person {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -61,26 +58,11 @@ public class Person {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese la identificación");
-        this.identification = sc.nextLine();
-
-        System.out.println("Ingrese el nombre");
-        this.name = sc.nextLine();
-
-        System.out.println("Ingrese el apellido");
-        this.lastName = sc.nextLine();
-    }
-
-    public void select() {
-        System.out.println("Id: " + this.id + "\n" +
+    @Override
+    public String toString() {
+        return "Id: " + this.id + "\n" +
                 "Identificación: " + this.identification + "\n" +
                 "Nombre: " + this.name + "\n" +
-                "Apellido: " + this.lastName
-        );
+                "Apellido: " + this.lastName;
     }
 }

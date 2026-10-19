@@ -1,11 +1,8 @@
-package domain;
+package app.domain;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 public class Consultation {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -63,28 +60,10 @@ public class Consultation {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id de la consulta");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese los datos de la cita");
-        this.appointment = new Appointment();
-        this.appointment.create();
-
-        System.out.println("Ingrese las notas de la consulta");
-        this.notes = sc.nextLine();
-
-        System.out.println("Ingrese la fecha y hora de la consulta (yyyy-MM-dd HH:mm)");
-        String date = sc.nextLine();
-        this.date = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-    }
-
-    public void select() {
-        System.out.println("Id consulta: " + this.id + "\n" +
+    @Override
+    public String toString() {
+        return "Id consulta: " + this.id + "\n" +
                 "Notas: " + this.notes + "\n" +
-                "Fecha: " + this.date
-        );
-        this.appointment.select();
+                "Fecha: " + this.date;
     }
 }

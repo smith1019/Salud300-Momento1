@@ -1,11 +1,8 @@
-package domain;
+package app.domain;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 public class Treatment {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -63,30 +60,10 @@ public class Treatment {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id del tratamiento");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese los datos del diagnóstico");
-        this.diagnosis = new Diagnosis();
-        this.diagnosis.create();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        System.out.println("Ingrese la fecha inicial (yyyy-MM-dd)");
-        this.initialDate = LocalDate.parse(sc.nextLine(), formatter);
-
-        System.out.println("Ingrese la fecha final (yyyy-MM-dd) o deje vacío si sigue activo");
-        String end = sc.nextLine();
-        this.endDate = end.isEmpty() ? null : LocalDate.parse(end, formatter);
-    }
-
-    public void select() {
-        System.out.println("Id tratamiento: " + this.id + "\n" +
+    @Override
+    public String toString() {
+        return "Id tratamiento: " + this.id + "\n" +
                 "Fecha inicial: " + this.initialDate + "\n" +
-                "Fecha final: " + this.endDate
-        );
-        this.diagnosis.select();
+                "Fecha final: " + this.endDate;
     }
 }

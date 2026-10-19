@@ -1,7 +1,6 @@
-package domain;
+package app.domain;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Patient extends Person {
 
@@ -53,42 +52,10 @@ public class Patient extends Person {
     // Methods
 
     @Override
-    public void create() {
-        super.create();
-
-        System.out.println("Ingrese el género: 1. Masculino 2. Femenino 3. Otro");
-        int option = sc.nextInt();
-        sc.nextLine();
-        this.gender = defineGender(option);
-
-        System.out.println("Ingrese la fecha de nacimiento (yyyy-MM-dd)");
-        String date = sc.nextLine();
-        this.dateOfBirth = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-        System.out.println("Ingrese el teléfono");
-        this.phone = sc.nextLine();
-    }
-
-    @Override
-    public void select() {
-        super.select();
-
-        System.out.println("Género: " + this.gender + "\n" +
+    public String toString() {
+        return super.toString() + "\n" +
+                "Género: " + this.gender + "\n" +
                 "Fecha de nacimiento: " + this.dateOfBirth + "\n" +
-                "Teléfono: " + this.phone
-        );
-    }
-
-    // Helpers
-
-    private Gender defineGender(int option) {
-        switch (option) {
-            case 1:
-                return Gender.MALE;
-            case 2:
-                return Gender.FEMALE;
-            default:
-                return Gender.OTHER;
-        }
+                "Teléfono: " + this.phone;
     }
 }

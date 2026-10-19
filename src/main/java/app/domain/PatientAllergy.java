@@ -1,9 +1,6 @@
-package domain;
-
-import java.util.Scanner;
+package app.domain;
 
 public class PatientAllergy {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -51,22 +48,8 @@ public class PatientAllergy {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese los datos del paciente");
-        this.patient = new Patient();
-        this.patient.create();
-
-        System.out.println("Ingrese los datos de la alergia");
-        this.allergy = new Allergy();
-        this.allergy.create();
-
-        System.out.println("Ingrese la reacción presentada");
-        this.reaction = sc.nextLine();
-    }
-
-    public void select() {
-        this.patient.select();
-        this.allergy.select();
-        System.out.println("Reacción: " + this.reaction);
+    @Override
+    public String toString() {
+        return "Reacción: " + this.reaction;
     }
 }

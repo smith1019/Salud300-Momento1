@@ -1,7 +1,17 @@
-package domain;
+package app.domain;
 
 public enum Gender {
-    MALE,
-    FEMALE,
-    OTHER
+    MALE("Masculino"),
+    FEMALE("Femenino"),
+    OTHER("Otro");
+
+    private final String value;
+
+    Gender(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

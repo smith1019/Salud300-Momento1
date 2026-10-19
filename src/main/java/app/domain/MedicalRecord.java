@@ -1,11 +1,8 @@
-package domain;
+package app.domain;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 public class MedicalRecord {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -53,24 +50,9 @@ public class MedicalRecord {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id de la historia clínica");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese los datos del paciente");
-        this.patient = new Patient();
-        this.patient.create();
-
-        System.out.println("Ingrese la fecha de creación (yyyy-MM-dd)");
-        String date = sc.nextLine();
-        this.creationDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    }
-
-    public void select() {
-        System.out.println("Id historia clínica: " + this.id + "\n" +
-                "Fecha de creación: " + this.creationDate
-        );
-        this.patient.select();
+    @Override
+    public String toString() {
+        return "Id historia clínica: " + this.id + "\n" +
+                "Fecha de creación: " + this.creationDate;
     }
 }

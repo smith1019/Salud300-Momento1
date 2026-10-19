@@ -1,9 +1,6 @@
-package domain;
-
-import java.util.Scanner;
+package app.domain;
 
 public class Diagnosis {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -51,23 +48,9 @@ public class Diagnosis {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id del diagnóstico");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese los datos de la consulta");
-        this.consultation = new Consultation();
-        this.consultation.create();
-
-        System.out.println("Ingrese el código del diagnóstico");
-        this.diagnosisCode = sc.nextLine();
-    }
-
-    public void select() {
-        System.out.println("Id diagnóstico: " + this.id + "\n" +
-                "Código: " + this.diagnosisCode
-        );
-        this.consultation.select();
+    @Override
+    public String toString() {
+        return "Id diagnóstico: " + this.id + "\n" +
+                "Código: " + this.diagnosisCode;
     }
 }

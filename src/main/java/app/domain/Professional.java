@@ -1,4 +1,4 @@
-package domain;
+package app.domain;
 
 public class Professional extends Person {
 
@@ -50,27 +50,9 @@ public class Professional extends Person {
     // Methods
 
     @Override
-    public void create() {
-        super.create();
-
-        System.out.println("Ingrese el número de licencia");
-        this.licenseNumber = sc.nextLine();
-
-        System.out.println("Ingrese el correo");
-        this.email = sc.nextLine();
-
-        System.out.println("Ingrese los datos de la especialidad");
-        this.specialty = new Specialty();
-        this.specialty.create();
-    }
-
-    @Override
-    public void select() {
-        super.select();
-
-        System.out.println("Licencia: " + this.licenseNumber + "\n" +
-                "Correo: " + this.email
-        );
-        this.specialty.select();
+    public String toString() {
+        return super.toString() + "\n" +
+                "Licencia: " + this.licenseNumber + "\n" +
+                "Correo: " + this.email;
     }
 }

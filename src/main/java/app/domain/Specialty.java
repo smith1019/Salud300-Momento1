@@ -1,9 +1,6 @@
-package domain;
-
-import java.util.Scanner;
+package app.domain;
 
 public class Specialty {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -41,18 +38,9 @@ public class Specialty {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id de la especialidad");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese el nombre de la especialidad");
-        this.name = sc.nextLine();
-    }
-
-    public void select() {
-        System.out.println("Id especialidad: " + this.id + "\n" +
-                "Nombre: " + this.name
-        );
+    @Override
+    public String toString() {
+        return "Id especialidad: " + this.id + "\n" +
+                "Nombre: " + this.name;
     }
 }

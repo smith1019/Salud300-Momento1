@@ -1,9 +1,6 @@
-package domain;
-
-import java.util.Scanner;
+package app.domain;
 
 public class Prescription {
-    public Scanner sc = new Scanner(System.in);
 
     // Atributes
 
@@ -71,32 +68,12 @@ public class Prescription {
 
     // Methods
 
-    public void create() {
-        System.out.println("Ingrese el Id de la prescripción");
-        this.id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Ingrese los datos del tratamiento");
-        this.treatment = new Treatment();
-        this.treatment.create();
-
-        System.out.println("Ingrese los datos del medicamento");
-        this.medication = new Medication();
-        this.medication.create();
-
-        System.out.println("Ingrese la frecuencia (ej: Cada 8 horas)");
-        this.frequency = sc.nextLine();
-
-        System.out.println("Ingrese la duración (ej: 7 días)");
-        this.duration = sc.nextLine();
-    }
-
-    public void select() {
-        System.out.println("Id prescripción: " + this.id + "\n" +
+    @Override
+    public String toString() {
+        return "Id prescripción: " + this.id + "\n" +
                 "Frecuencia: " + this.frequency + "\n" +
-                "Duración: " + this.duration
-        );
-        this.treatment.select();
-        this.medication.select();
+                "Duración: " + this.duration;
     }
+
 }
+
