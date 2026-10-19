@@ -2,22 +2,31 @@ package app;
 
 import app.domain.AppointmentStatus;
 import app.domain.Gender;
-import app.domain.Patient;
-import app.domain.Professional;
-import app.domain.Specialty;
+import app.service.helpers.SetAppointmentStatus;
+import app.service.helpers.SetGender;
+import app.utils.FormRuleValidator;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Application {
 
     public static void main(String[] args) {
-        Patient patient = new Patient(1, "123", "Ana", "Ruiz", Gender.FEMALE, LocalDate.of(1990, 5, 1), "300");
-        System.out.println(patient);
-        System.out.println("Género legible: " + patient.getGender().getValue());
-        System.out.println("Estado legible: " + AppointmentStatus.CANCELLED.getValue());
+        int id = FormRuleValidator.validateInt("Ingrese un id");
+        double temperature = FormRuleValidator.validateDouble("Ingrese la temperatura");
+        String name = FormRuleValidator.validateString("Ingrese un nombre");
+        LocalDate birth = FormRuleValidator.validateDate("Ingrese la fecha de nacimiento");
+        LocalDateTime appointmentDate = FormRuleValidator.validateDateTime("Ingrese la fecha y hora de la cita");
+        Gender gender = SetGender.getGender();
+        AppointmentStatus status = SetAppointmentStatus.getAppointmentStatus();
 
-        Professional professional = new Professional(2, "456", "Luis", "Mora", "L-9", "luis@correo.com", new Specialty(1, "Cardiología"));
-        System.out.println(professional);
-        System.out.println("Especialidad: " + professional.getSpecialty().getName());
+        System.out.println("---- Resultado ----");
+        System.out.println("Id: " + id);
+        System.out.println("Temperatura: " + temperature);
+        System.out.println("Nombre: " + name);
+        System.out.println("Nacimiento: " + birth);
+        System.out.println("Cita: " + appointmentDate);
+        System.out.println("Género: " + gender.getValue());
+        System.out.println("Estado: " + status.getValue());
     }
 }
