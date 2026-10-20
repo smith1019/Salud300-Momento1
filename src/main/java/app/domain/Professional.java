@@ -53,6 +53,7 @@ public class Professional extends Person {
     public String toString() {
         return super.toString() + "\n" +
                 "Licencia: " + this.licenseNumber + "\n" +
-                "Correo: " + this.email;
+                "Correo: " + this.email + "\n" +
+                "Especialidad: " + (this.specialty != null ? this.specialty.getName() : null);
     }
 }

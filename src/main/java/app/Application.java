@@ -1,32 +1,41 @@
 package app;
 
-import app.domain.AppointmentStatus;
-import app.domain.Gender;
-import app.service.helpers.SetAppointmentStatus;
-import app.service.helpers.SetGender;
-import app.utils.FormRuleValidator;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import app.repository.PatientRepositoryImpl;
+import app.repository.ProfessionalRepositoryImpl;
+import app.repository.SpecialtyRepositoryImpl;
+import app.service.PatientServiceImpl;
+import app.service.ProfessionalServiceImpl;
+import app.service.SpecialtyServiceImpl;
+import app.view.PatientView;
+import app.view.ProfessionalView;
+import app.view.SpecialtyView;
 
 public class Application {
 
     public static void main(String[] args) {
-        int id = FormRuleValidator.validateInt("Ingrese un id");
-        double temperature = FormRuleValidator.validateDouble("Ingrese la temperatura");
-        String name = FormRuleValidator.validateString("Ingrese un nombre");
-        LocalDate birth = FormRuleValidator.validateDate("Ingrese la fecha de nacimiento");
-        LocalDateTime appointmentDate = FormRuleValidator.validateDateTime("Ingrese la fecha y hora de la cita");
-        Gender gender = SetGender.getGender();
-        AppointmentStatus status = SetAppointmentStatus.getAppointmentStatus();
+        // Repositorios
+        SpecialtyRepositoryImpl specialtyRepository = new SpecialtyRepositoryImpl();
+        ProfessionalRepositoryImpl professionalRepository = new ProfessionalRepositoryImpl();
+        PatientRepositoryImpl patientRepository = new PatientRepositoryImpl();
 
-        System.out.println("---- Resultado ----");
-        System.out.println("Id: " + id);
-        System.out.println("Temperatura: " + temperature);
-        System.out.println("Nombre: " + name);
-        System.out.println("Nacimiento: " + birth);
-        System.out.println("Cita: " + appointmentDate);
-        System.out.println("Género: " + gender.getValue());
-        System.out.println("Estado: " + status.getValue());
+        // Servicios
+        SpecialtyServiceImpl specialtyService = new SpecialtyServiceImpl(specialtyRepository);
+        ProfessionalServiceImpl professionalService = new ProfessionalServiceImpl(professionalRepository, specialtyRepository);
+        PatientServiceImpl patientService = new PatientServiceImpl(patientRepository);
+
+        // Vistas
+        SpecialtyView specialtyView = new SpecialtyView(specialtyService);
+        ProfessionalView professionalView = new ProfessionalView(professionalService, specialtyService);
+        PatientView patientView = new PatientView(patientService);
+
+        // Prueba temporal (el menú real llega en el siguiente bloque)
+        specialtyView.createSpecialty();
+        professionalView.createProfessional();
+        patientView.createPatient();
+
+        System.out.println("===== LISTADOS =====");
+        specialtyView.showSpecialties();
+        professionalView.showProfessionals();
+        patientView.showPatients();
     }
 }

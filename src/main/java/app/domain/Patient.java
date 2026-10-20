@@ -54,7 +54,7 @@ public class Patient extends Person {
     @Override
     public String toString() {
         return super.toString() + "\n" +
-                "Género: " + this.gender + "\n" +
+                "Género: " + (this.gender != null ? this.gender.getValue() : null) + "\n" +
                 "Fecha de nacimiento: " + this.dateOfBirth + "\n" +
                 "Teléfono: " + this.phone;
     }
