@@ -74,6 +74,6 @@ public class Appointment {
     public String toString() {
         return "Id cita: " + this.id + "\n" +
                 "Fecha: " + this.date + "\n" +
-                "Estado: " + this.status;
+                "Estado: " + (this.status != null ? this.status.getValue() : null);
     }
 }
